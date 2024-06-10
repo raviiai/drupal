@@ -1,0 +1,18 @@
+version: '3'
+services:
+  web:
+    image: drupal:latest
+    volumes:
+      - ./drupal:/var/www/html
+    ports:
+      - "80:80"
+  db:
+    image: mysql:latest
+    volumes:
+      - ./db-backups:/var/mysql/backups
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: drupaldb
+      MYSQL_USER: drupal
+      MYSQL_PASSWORD: password
+
